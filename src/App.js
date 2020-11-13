@@ -9,10 +9,22 @@ function App() {
     // <Fragment> o react precisa encapsular dados caso nao queria usar classes usar o fragment
     <Container component="article" maxWidth="sm">
       <Typography variant="h3" component="h1" align="center" >Formulário de cadastro</Typography>
-      <FormularioCadastro />
+      <FormularioCadastro aoEnviar={aoEnviarForm} validarCPF={validarCPF}/>
     </Container>
     // </Fragment>
   );
+}
+
+function aoEnviarForm(dados) {
+  console.log(dados);
+}
+
+function validarCPF(cpf) {
+  if (cpf.length !== 11) {
+    return { valido: false, texto: "CPF deve ter 11 digitos" }
+  } else{
+    return { valido: true, texto: "" }
+  }
 }
 
 export default App;
